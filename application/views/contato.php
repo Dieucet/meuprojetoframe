@@ -19,7 +19,7 @@ and open the template in the editor.
         echo "<p>";
         ?>
         <h2>Contato</h2>
-        <?php echo form_open('contatos/inserir'); ?>
+        <?php echo form_open('contato/inserir'); ?>
             <label>Nome</label>
             <input name="nome" type="text" required/>
             <p></p>

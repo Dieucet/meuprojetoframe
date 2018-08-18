@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class contatos_model extends CI_Model {
+class Contatos_model extends CI_Model {
 
     function _construct() {
         parent::contruct();
