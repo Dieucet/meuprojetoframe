@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://localhost/meuprojetoframe';
-$config['base_url'] = 'mysql556.umbler.com:41890';
+$config['base_url'] = 'http://projetodieucet-com.umbler.net';
 
 /*
 |--------------------------------------------------------------------------

@@ -75,7 +75,7 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'http://projetodieucet-com.umbler.net',
+	'hostname' => 'mysql556.umbler.com:41890',
 	'username' => 'dieucet',
 	'password' => 'novembre81',
 	'database' => 'diucet',
