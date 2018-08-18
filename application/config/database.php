@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'hostname' => 'http://projetodieucet-com.umbler.net',
+	'username' => 'dieucet',
+	'password' => 'novembre81',
 	'database' => 'diucet',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
