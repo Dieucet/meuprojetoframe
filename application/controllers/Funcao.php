@@ -2,14 +2,15 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Contato extends CI_Controller {
+class Funcao extends CI_Controller {
 
     function __construct() {
         parent::__construct();
         if (!$this->session->userdata('estou_logado')){
             redirect('login');
+        } elseif ($this->session->userdata('logado')->perfilAcesso == "USER") {
+            redirect('home');
         }
-        $this->load->model('Contatos_model', 'contatos');
         $this->load->model('Funcao_model', 'funcao');
         //contatos é uma alias para o contatos_model
     }
@@ -18,63 +19,56 @@ class Contato extends CI_Controller {
         $this->load->view('template/header');
         $dados['acronico'] = "MPF";
         $dados['completo'] = "Meu Projeto Frame";
-        $dados['contatos'] = $this->contatos->listar();
         $dados['funcao'] = $this->funcao->listar();
-        $this->load->view('contato', $dados);
+        $this->load->view('funcao', $dados);
         $this->load->view('template/footer');
     }
 
     public function inserir() {
-        $dados['nome'] = mb_convert_case($this->input->post('nome'),MB_CASE_UPPER);
-        $dados['email'] = mb_convert_case($this->input->post('email'),MB_CASE_LOWER);
-        $dados['idfuncao'] = $this->input->post('idfuncao');
-        $result = $this->contatos->inserir($dados);
-        if ($result == true) {
+        $dados['nomefuncao'] = $this->input->post('nomefuncao');
+        $result = $this->funcao->inserir($dados);
+         if ($result == true) {
             $this->session->set_flashdata('sucesso', 'msg');
-        redirect('contato');
+        redirect('funcao');
         } else {
             $this->session->set_flashdata('falha', 'msg');
-            redirect('contato');
-        }
+            redirect('funcao');
+    }
     }
 
     public function excluir($id) {
-        $result = $this->contatos->deletar($id);
-        if ($result == true) {
+        $result = $this->funcao->deletar($id);
+         if ($result == true) {
             $this->session->set_flashdata('excluirS', 'msg');
-        redirect('contato');
+        redirect('funcao');
         } else {
             $this->session->set_flashdata('excluirF', 'msg');
-            redirect('contato');
-        }
+            redirect('funcao');
+    }
     }
     
     public function editar($id) {
         $data['acronico'] = "MPF";
         $data['completo'] = "Meu Projeto Framework";
-        $data['contatoEditar'] = $this->contatos->editar($id);
-        $data['funcao'] = $this->funcao->listar();
+        $data['funcaoEditar'] = $this->funcao->editar($id);
         $this->load->view('template/header');
-        $this->load->view('contatoEditar', $data);
+        $this->load->view('funcaoEditar', $data);
         $this->load->view('template/footer');
     }
     
 public function atualizar() {
-    $data['id'] = $this->input->post('id');
-    $data['nome'] = mb_convert_case($this->input->post('nome'),MB_CASE_UPPER);
-    $data['email'] = mb_convert_case( $this->input->post('email'),MB_CASE_LOWER);
     $data['idfuncao'] = $this->input->post('idfuncao');
-    $result = $this->contatos->atualizar($data);
-    if ($result == true) {
+    $data['nomefuncao'] = $this->input->post('nomefuncao');
+    $result = $this->funcao->atualizar($data);
+      if ($result == true) {
             $this->session->set_flashdata('sucessoA', 'msg');
-        redirect('contato');
+        redirect('funcao');
         } else {
             $this->session->set_flashdata('atualizarerro', 'msg');
-            redirect('contato');
+            redirect('funcao');
         }
 }
     
     
 
 }
-

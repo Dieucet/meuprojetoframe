@@ -15,4 +15,6 @@ and open the template in the editor.
         ?>
         <h2>Home</h2>
         <a href="<?php echo base_url() . 'contato'; ?>">Contato</a>
+        <a href="<?php echo base_url() . 'funcao'; ?>">Função</a>
+        <a href="<?php echo base_url() . 'usuario'; ?>">Usuário</a>
 </div>

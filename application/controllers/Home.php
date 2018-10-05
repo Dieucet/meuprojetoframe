@@ -6,6 +6,9 @@ class Home extends CI_Controller {
 
     function __construct() {
         parent::__construct();
+        if (!$this->session->userdata('estou_logado')){
+            redirect('login');
+        }
         $this->load->model('Contatos_model', 'contatos');
         //contatos é uma alias para o contatos_model
     }

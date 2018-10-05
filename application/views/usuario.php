@@ -1,4 +1,3 @@
-
 <div class="container">
     <div class="row">
         <!--Responsive para emartphone, tablet, e pc-->
@@ -12,26 +11,29 @@
 //        echo $completo;
             echo "<p>";
             ?>
-            <h2>Contato</h2>
-            <?php echo form_open('contato/inserir'); ?>
+            <h2>Usuario</h2>
+            <?php echo form_open('usuario/inserir'); ?>
             <div class="form-group">
-                <label for="nome">Nome</label>
-                <input class="form-control" type="text" id="nome" name="nome" required>
+                <label for="nomeUsuario">Nome Usuario</label>
+                <input class="form-control" type="text" id="nomeUsuario" name="nomeUsuario" required>
             </div>
             <div class="form-group">
-                <label for="email">Email</label>
-                <input class="form-control" id="email" name="email" type="email" required/>
+                <label for="user">Usuario</label>
+                <input class="form-control" type="text" id="user" name="user" required>
             </div>
             <div class="form-group">
-                <label for="idfuncao">Função</label>
-                <select class="form-control" required="required" name="idfuncao" id="idfuncao">
-                    <option value="" ></option>
-                    <?php foreach ($funcao as $funcao): ?>
-                        <option value="<?php echo $funcao->idfuncao; ?>"><?php echo $funcao->nomefuncao; ?></option>
-                    <?php endforeach ?>
+                <label for="senha">Senha</label>
+                <input class="form-control" type="password" id="senha" name="senha" required>
+            </div>
+            <div class="form-group">
+                <label for="perfilAcesso">Perfil</label>
+                <select class="form-control" required="required" name="perfilAcesso" id="perfilAcesso">
+                    <option value="=="></option>
+                    <option value="ADM">Administrador</option>
+                    <option value="USER">Usuário</option>
                 </select>
-            </div>
             <p></p>
+            </div>
             <input class="btn btn-success" type="submit" value="salvar"/>
             <input class="btn btn-secondary" type="reset" value="limpado"/>
             <input class="btn btn-secondary" id="btn-lista" value="Listar Contatos"/>
@@ -45,25 +47,23 @@
                         <!--<caption>contatos</caption>-->
                         <thead>
                             <tr>
-                                <th class="table-dark" >Nome</th>
-                                <th class="table-dark" >e-email</th>
+                                <th class="table-dark" >Usuario</th>
+                                <th class="table-dark" >User</th>
                                 <th class="table-dark" >Função</th>
-                                <th class="table-dark" >funções</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php if ($contatos == FALSE): ?>
+                                                <?php if ($usuario == False): ?>
                                 <tr><td>Nenhum contato encontrado!</td></tr>
                             <?php else: ?>
-                                <?php foreach ($contatos as $row): ?>
+                                <?php foreach ($usuario as $row): ?>
                                     <tr>
-                                        <td><?php echo $row->nome; ?></td>
-                                        <td><?php echo $row->email; ?></td>
-                                        <td><?php echo $row->nomefuncao; ?></td>
+                                        <td><?php echo $row->nomeUsuario; ?></td>
+                                        <td><?php echo $row->User; ?></td>
                                         <td>
-                                            <a href="<?php echo base_url() . 'contato/editar/' . $row->id; ?>">Editar</a>
+                                            <a href="<?php echo base_url() . 'usuario/editar/' . $row->idusuario; ?>">Editar</a>
                                             |
-                                            <a href="<?php echo base_url() . 'contato/excluir/' . $row->id; ?>">Excluir</a>
+                                            <a href="<?php echo base_url() . 'usuario/excluir/' . $row->idusuario; ?>">Excluir</a>
 
                                         </td>
                                     </tr>
@@ -99,3 +99,4 @@
         });
 
     </script>
+
